@@ -1,0 +1,63 @@
+- helm:
+    repo:
+      name: <repo-name> # REQUIRED - name of helm repo
+      url: <repo-url> # REQUIRED - url of helm repo
+      packageName: <package-name> # REQUIRED - name of helm package
+    dependencies: # OPTIONAL
+    - "{{ Deployers | <address-from-Datahub-directory-splitted-with-dot> | <index-in-mentioned-deployers.yaml> }}"
+    ...
+    preDeploy: # OPTIONAL
+      askBefore: <boolean> # DEFAULT: true
+      commands: | # DEFAULT: null
+        <command-1>
+        <command-2>
+        ...
+    onDeploy: # OPTIONAL
+      askBefore: <boolean> # DEFAULT: true
+    postDeploy: # OPTIONAL
+      askBefore: <boolean> # DEFAULT: true
+      commands: | # DEFAULT: null
+        <command-1>
+        <command-2>
+        ...
+    chart:
+      fileName: <file-name> # OPTIONAL - - identifier of helm deployer config
+      template:
+        name: <name> # REQUIRED - release name of helm chart
+        version: <version> # REQUIRED - version of helm chart
+        namespace: <namespace> # OPTIONAL - namespace of helm chart - DEFAULT: default
+        createNamespace: <boolean> # OPTIONAL - create namespace of helm chart - DEFAULT: true
+    values: # OPTIONAL
+        fileName: <file-name> # OPTIONAL - You can not change this value after first deploy
+        template: # OPTIONAL - Helm Parameters
+            ...
+
+- k8s:
+    folderName: <folder-name> # OPTIONAL - name of k8s folder - DEFAULT: k8s
+    fileName: <file-name> # REQUIRED - identifier of k8s deployer config
+    dependencies: # OPTIONAL
+    - "{{ Deployers | <address-from-Datahub-directory-splitted-wirh-dot> | <index-in-mentioned-deployers.yaml> }}"
+    ...
+    preDeploy: # OPTIONAL
+      askBefore: <boolean> # DEFAULT: true
+      commands: | # DEFAULT: null
+        <command-1>
+        <command-2>
+        ...
+    onDeploy: # OPTIONAL
+      askBefore: <boolean> # DEFAULT: true
+    postDeploy: # OPTIONAL
+      askBefore: <boolean> # DEFAULT: true
+      commands: | # DEFAULT: null
+        <command-1>
+        <command-2>
+        ...
+    template:
+      apiVersion: <api-version> # REQUIRED - api version of k8s config
+      kind: <kind> # REQUIRED - kind of k8s config
+      metadata:
+        name: <name> # REQUIRED - name of k8s config - You can not change this value after first deploy
+        namespace: <namespace> # OPTIONAL - namespace of k8s config - DEFAULT: default - You can not change this value after first deploy
+        labels: # OPTIONAL - labels of k8s config
+            ...
+      ... # Other k8s Parameters
