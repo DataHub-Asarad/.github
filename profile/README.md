@@ -46,6 +46,7 @@
   ├── Resources
   │   ├── Kerberos 
   │   ├── CertManager 
+  │   ├── IngressNginx
   │   ├── NatsJetstream 
   │   ├── ELK 
   │   ├── LDAP 
