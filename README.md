@@ -10,22 +10,8 @@
 </a>
 
 <div style="margin-left:5em;">
-    <span style="vertical-align: middle;"><font size="+2">Horizontaly scaled and modular product for fetching and providing live and historical data from any Exchange containing many additional services with completely automated deployment.</font></span>
+    <span style="vertical-align: middle;"><font size="+2">Horizontaly scaled and modular product for fetching and providing live and historical data from any Exchange containing many additional services with completely automated deployment</font></span>
 </div>
-
----
-
-# Requirements
-- **Kubernetes Cluster** v1.28.2
-- **Initial Configs**
-    - Deploy manually Initial folder pipeline
-- **Helm** v3.10.1
-- **Python** v3.10.12
-- **virtualenv** v20.24.7
-- **BWS CLI** v0.3.1
-    - optional
-- **Kubens** 0.9.4
-    - optional
 
 ---
 
@@ -33,36 +19,39 @@
 #### DataHub directory
 ```
   │
-  ├── Manager 
+  ├── Manager
+  │   ├── ci-cd.sh
+  │   ├── manual.sh
+  |   └── ...
   │
   ├── Initial 
-  │   ├── DynamicProvisioning
-  │   │   ├── Ceph
-  │   │   └── StorageClass
-  │   └── Routing
-  │       ├── Calico
-  │       └── Tigera
+  │   └── DynamicProvisioning
+  │       ├── Ceph
+  │       └── StorageClass
   │
   ├── Resources
-  │   ├── Kerberos 
-  │   ├── CertManager 
-  │   ├── IngressNginx
-  │   ├── NatsJetstream 
-  │   ├── ELK 
-  │   ├── LDAP 
-  │   ├── PostgresDB 
-  │   ├── Prometheus 
-  │   └── QuestDB 
+  |   ├── Routing
+  |   ├── CertManager
+  |   ├── MetalLb
+  |   ├── ExternalDNS
+  |   ├── IngressNginx
+  |   ├── MariaGalera
+  |   ├── Quest
+  |   ├── NatsJetstream
+  |   ├── LDAP
+  |   ├── Kerberos
+  |   ├── Prometheus
+  |   └── ELK
   │
   ├── DjangoPrivate
   │   ├── Updater
   │   ├── Producer 
   │   ├── Consumer 
   │   ├── CoreFeaturesLab 
-  │   └── CoreEngine 
+  │   ├── CoreEngine
+  |   └── PlayGround
   │
   └── DjangoPublic
-      ├── ImPanel 
       ├── MyPanel 
       ├── Provider 
       ├── BackTester 
@@ -70,3 +59,14 @@
       ├── Executer 
       └── AI 
 ```
+
+---
+
+# Requirements
+- **Kubernetes Cluster** v1.28.2
+- **Initial Configs**
+    - Deploy manually Initial Repository
+- **Helm** v3.10.1
+- **Python** v3.10.12
+- **virtualenv** v20.24.7
+- **BWS CLI** v0.3.1
